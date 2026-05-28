@@ -136,7 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             await loadPortalData();
                             loginSuccessUI('supabase');
                             return;
+                        } else {
+                            alert('Utente autenticato con successo su Supabase, ma non è stato trovato alcun record corrispondente nella tabella "profili". Assicurati di aver inserito l\'ID corretto.');
                         }
+                    } else if (error) {
+                        console.error('Supabase Auth error:', error.message);
+                        alert('Errore di autenticazione Supabase: ' + error.message + '\n\nAccesso eseguito in Modalità Demo.');
                     }
                 } catch (err) {
                     console.error('Supabase auth error, falling back to mock mode:', err);
